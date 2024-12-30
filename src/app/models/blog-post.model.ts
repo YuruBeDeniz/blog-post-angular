@@ -3,5 +3,5 @@ export type BlogPost = {
     post: string;
     author: string;
     topic: string;
-    created_at: string;
+    created_at?: string;
 }

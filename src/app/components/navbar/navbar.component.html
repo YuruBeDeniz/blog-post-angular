@@ -1,1 +1,12 @@
-<p>navbar works!</p>
+<nav class="navbar">
+    <ul class="navbar-links">
+        <li><a class="button" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+        <li *ngIf="isLoggedIn"><a class="button" routerLink="/topics" routerLinkActive="active" ariaCurrentWhenActive="page">Topics</a></li>
+        <li *ngIf="isLoggedIn"><a class="button" routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page">All Posts</a></li>
+        <li><a class="button" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Signup</a></li>
+        <li *ngIf="!isLoggedIn"><a class="button" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+        <li *ngIf="isLoggedIn"><button class="button" (click)="onLogout()">Logout</button></li>
+    </ul>
+  </nav>
+  
+  <router-outlet></router-outlet>
