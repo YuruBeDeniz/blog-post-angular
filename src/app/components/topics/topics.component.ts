@@ -1,28 +1,28 @@
-import { Component, signal, OnInit } from '@angular/core';
-import { BlogTopicService } from '../../services/topic.service';
-import { BlogTopic } from '../../models/blog-topic.model';
+import { Component, OnInit, signal } from '@angular/core';
+import { BlogPostService } from '../../services/post.service';
+import { BlogPost } from '../../models/blog-post.model';
+import { TopicsSidebarComponent } from '../topics-sidebar/topics-sidebar.component';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-topics',
   standalone: true,
-  imports: [CommonModule],
+  imports: [TopicsSidebarComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './topics.component.html',
-  styleUrl: './topics.component.css',
+  styleUrls: ['./topics.component.css'],
 })
 export class TopicsComponent implements OnInit {
-  blogTopics = signal<BlogTopic[]>([]);
+  blogPosts = signal<BlogPost[]>([]);
 
-  constructor(private blogTopicService: BlogTopicService) {}
+  constructor(private blogPostService: BlogPostService) {}
 
-  ngOnInit(): void {
-    this.getBlogTopics();
-  }
+  ngOnInit(): void {}
 
-  getBlogTopics(): void {
-    this.blogTopicService.getBlogTopics().subscribe({
-      next: (topics) => this.blogTopics.set(topics),
-      error: (err) => console.error('Error fetching topics:', err),
+  onTopicSelected(topicId: string): void {
+    this.blogPostService.getPostsByTopic(topicId).subscribe({
+      next: (posts) => this.blogPosts.set(posts),
+      error: (err) => console.error('Error fetching posts:', err),
     });
   }
 }

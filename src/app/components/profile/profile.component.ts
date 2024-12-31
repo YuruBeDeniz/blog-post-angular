@@ -3,8 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BlogTopicService } from '../../services/topic.service';
-import { BlogTopic } from '../../models/blog-topic.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +28,8 @@ export class ProfileComponent {
 constructor(
   private authService: AuthService,
   private blogTopicService: BlogTopicService,
-  private formBuilder: FormBuilder
+  private formBuilder: FormBuilder,
+  private router: Router
 ){
   this.authService.user$.subscribe((user) => {
     if(user) {
@@ -51,7 +52,10 @@ createTopic(): void {
   };
 
   this.blogTopicService.createBlogTopic(newBlogTopic).subscribe({
-    next: () => this.topicForm.reset(),
+    next: (createdTopic) => {
+      this.topicForm.reset()
+      this.router.navigate(['/topics'])
+    },
     error: (err) => this.errorMessage.set(err.message),
   });
 }
