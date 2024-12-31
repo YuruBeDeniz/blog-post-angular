@@ -19,7 +19,7 @@ export class StorageService {
     if (this.isBrowser) {
       return localStorage.getItem(key);
     }
-    return null; // Return a fallback or handle the server scenario
+    return null; 
   }
 
   removeItem(key: string): void {

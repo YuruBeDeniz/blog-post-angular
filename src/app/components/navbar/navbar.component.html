@@ -3,10 +3,12 @@
         <li><a class="button" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
         <li *ngIf="isLoggedIn"><a class="button" routerLink="/topics" routerLinkActive="active" ariaCurrentWhenActive="page">Topics</a></li>
         <li *ngIf="isLoggedIn"><a class="button" routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page">All Posts</a></li>
+    </ul>
+    <ul class="auth-links">
+        <li><a class="button" routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">Profile</a></li>
         <li><a class="button" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Signup</a></li>
         <li *ngIf="!isLoggedIn"><a class="button" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
         <li *ngIf="isLoggedIn"><button class="button" (click)="onLogout()">Logout</button></li>
     </ul>
-  </nav>
-  
-  <router-outlet></router-outlet>
+</nav>
+<router-outlet></router-outlet>

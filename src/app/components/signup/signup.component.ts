@@ -24,6 +24,7 @@ export class SignupComponent {
   onSubmit(): void {
     if (this.signupForm.valid) {
       const user = this.signupForm.value;
+      console.log('User:', user);
 
       this.userService.signup(user).subscribe({
         next: (response) => {

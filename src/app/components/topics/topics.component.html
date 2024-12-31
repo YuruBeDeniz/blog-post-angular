@@ -1,1 +1,6 @@
-<p>topics works!</p>
+<h1>Topics</h1>
+<ul>
+  <li *ngFor="let blogTopic of blogTopics()">
+    {{ blogTopic.title }}
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+<p>Hello {{ user().username }}!</p>
+
+
+<h1>Create a Topic</h1>
+<form class="form-container" [formGroup]="topicForm" (ngSubmit)="createTopic()">
+  <input formControlName="title" type="text" placeholder="Topic title" />
+  <button>Create Topic</button>
+</form>
+<p *ngIf="errorMessage()">{{ errorMessage() }}</p>

@@ -23,7 +23,6 @@ export class AuthService {
     private userService: UserService,
     private storageService: StorageService
   ) {
-    // Initialize isLoggedInSubject and isLoggedIn$
     const hasToken = this.hasToken();
     this.isLoggedInSubject = new BehaviorSubject<boolean>(hasToken);
     this.isLoggedIn$ = this.isLoggedInSubject.asObservable();

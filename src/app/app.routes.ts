@@ -6,6 +6,7 @@ import { TopicsComponent } from './components/topics/topics.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent }, 
@@ -15,4 +16,5 @@ export const routes: Routes = [
     { path: 'topics/:topicId', component: TopicDetailComponent }, 
     { path: 'signup', component: SignupComponent }, 
     { path: 'login', component:  LoginComponent}, 
+    { path: 'profile', component:  ProfileComponent}, 
 ];
