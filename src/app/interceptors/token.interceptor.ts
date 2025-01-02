@@ -9,6 +9,12 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.storageService.getItem('authToken');
+    const excludedUrls = ['/users/signup/', '/users/login/'];
+
+    if (excludedUrls.some(url => req.url.includes(url))) {
+      return next.handle(req); // Pass through without adding the token
+    }
+
     if (token) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', `Token ${token}`)

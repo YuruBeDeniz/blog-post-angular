@@ -1,1 +1,12 @@
-<p>posts works!</p>
+<div class="add-post-container">
+<form [formGroup]="postForm" (ngSubmit)="createPost()">
+  <textarea formControlName="post" placeholder="Write your post..."></textarea>
+  <button type="submit">Add Post</button>
+</form>
+</div>
+<h2>Posts for Topic: {{ topicTitle }}</h2>
+<ul>
+  <li *ngFor="let post of posts">
+    {{ post.post }}
+  </li>
+</ul>

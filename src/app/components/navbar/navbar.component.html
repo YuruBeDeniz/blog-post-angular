@@ -2,7 +2,7 @@
     <ul class="navbar-links">
         <li><a class="button" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
         <li *ngIf="isLoggedIn"><a class="button" routerLink="/topics" routerLinkActive="active" ariaCurrentWhenActive="page">Topics</a></li>
-        <li *ngIf="isLoggedIn"><a class="button" routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page">All Posts</a></li>
+        
     </ul>
     <ul class="auth-links">
         <li><a class="button" routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">Profile</a></li>
@@ -12,3 +12,6 @@
     </ul>
 </nav>
 <router-outlet></router-outlet>
+
+
+<!-- <li *ngIf="isLoggedIn"><a class="button" routerLink="/posts" routerLinkActive="active" ariaCurrentWhenActive="page">All Posts</a></li> -->

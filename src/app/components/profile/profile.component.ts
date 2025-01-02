@@ -53,6 +53,7 @@ createTopic(): void {
 
   this.blogTopicService.createBlogTopic(newBlogTopic).subscribe({
     next: (createdTopic) => {
+      console.log(createdTopic)
       this.topicForm.reset()
       this.router.navigate(['/topics'])
     },

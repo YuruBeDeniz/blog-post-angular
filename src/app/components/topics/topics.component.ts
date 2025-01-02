@@ -1,28 +1,26 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { BlogPostService } from '../../services/post.service';
-import { BlogPost } from '../../models/blog-post.model';
 import { TopicsSidebarComponent } from '../topics-sidebar/topics-sidebar.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PostsComponent } from '../posts/posts.component';
 
 @Component({
   selector: 'app-topics',
   standalone: true,
-  imports: [TopicsSidebarComponent, CommonModule, ReactiveFormsModule],
+  imports: [TopicsSidebarComponent, PostsComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.css'],
 })
 export class TopicsComponent implements OnInit {
-  blogPosts = signal<BlogPost[]>([]);
+  selectedTopicId: string | null = null;
+  selectedTopicTitle: string | null = null;
 
-  constructor(private blogPostService: BlogPostService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  onTopicSelected(topicId: string): void {
-    this.blogPostService.getPostsByTopic(topicId).subscribe({
-      next: (posts) => this.blogPosts.set(posts),
-      error: (err) => console.error('Error fetching posts:', err),
-    });
+  onTopicSelected(topic: { id: string; title: string }): void {
+    this.selectedTopicId = topic.id;
+    this.selectedTopicTitle = topic.title;
   }
 }

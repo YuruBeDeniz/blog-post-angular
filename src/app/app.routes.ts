@@ -11,10 +11,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent }, 
     { path: 'topics', component: TopicsComponent }, 
-    { path: 'posts', component: PostsComponent },
     { path: 'posts/:postId', component: PostDetailComponent }, 
     { path: 'topics/:topicId', component: TopicDetailComponent }, 
     { path: 'signup', component: SignupComponent }, 
     { path: 'login', component:  LoginComponent}, 
     { path: 'profile', component:  ProfileComponent}, 
 ];
+
+/*     { path: 'posts', component: PostsComponent }, */

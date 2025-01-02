@@ -9,18 +9,24 @@ export class BlogPostService {
 
   constructor(private http: HttpClient) {}
 
-  // Fetch all posts for a topic
-  getPostsByTopic(topicId: string): Observable<BlogPost[]> {
-    return this.http.get<BlogPost[]>(`${this.apiUrl}/?topic=${topicId}`);
-  }
-
-  // Create a new post
   createPost(post: BlogPost): Observable<BlogPost> {
-    return this.http.post<BlogPost>(this.apiUrl, post);
+    return this.http.post<BlogPost>(`${this.apiUrl}/`, post);
   }
 
-  // Delete a post
+  getPostDetails(postId: string): Observable<BlogPost> {
+    return this.http.get<BlogPost>(`${this.apiUrl}/${postId}/`);
+  }
+
+  getPostsByAuthor(author: string): Observable<BlogPost[]> {
+    return this.http.get<BlogPost[]>(`${this.apiUrl}/?author=${author}`);
+  }
+
+  getPostsByTopic(topicId: string): Observable<BlogPost[]> {
+    console.log(`API call to fetch posts for topicId: ${topicId}`);
+    return this.http.get<BlogPost[]>(`${this.apiUrl}/?topic=${topicId}`);
+  }  
+  
   deletePost(postId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${postId}`);
+    return this.http.delete<void>(`${this.apiUrl}/${postId}/`);
   }
 }

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class TopicsSidebarComponent {
   blogTopics = signal<BlogTopic[]>([]);
 
-  @Output() topicSelected = new EventEmitter<string>();
+  @Output() topicSelected = new EventEmitter<{ id: string; title: string }>();
 
   constructor(private blogTopicService: BlogTopicService) {}
 
@@ -28,8 +28,8 @@ export class TopicsSidebarComponent {
     });
   }
 
-  selectTopic(topicId: string): void {
-    this.topicSelected.emit(topicId);
-  }
+  selectTopic(topic: BlogTopic): void {
+    this.topicSelected.emit({ id: topic.id!, title: topic.title });
+  }  
 
 }
