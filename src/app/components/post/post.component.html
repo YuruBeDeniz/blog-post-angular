@@ -1,1 +1,16 @@
-<p>post works!</p>
+@if (!isEditing()) {
+    <div class="post-container">
+        <p>{{post.post}}</p>
+        <span>By {{user().username}}</span>
+        <button class="btn-edit" (click)="(toggleEdit())">Edit</button>
+    </div>
+} @else {
+    <app-post-detail 
+        [post]="post" 
+        (cancel)="toggleEdit()" 
+        (update)="updatePost($event)" 
+        (delete)="deletePost($event)"
+    ></app-post-detail>
+}   
+
+

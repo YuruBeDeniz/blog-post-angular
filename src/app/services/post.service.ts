@@ -17,12 +17,15 @@ export class BlogPostService {
     return this.http.get<BlogPost>(`${this.apiUrl}/${postId}/`);
   }
 
+  updatePost(id: string | undefined, post: BlogPost): Observable<BlogPost> {
+    return this.http.put<BlogPost>(`${this.apiUrl}/${post.id}/`, post);
+  }
+
   getPostsByAuthor(author: string): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(`${this.apiUrl}/?author=${author}`);
   }
 
   getPostsByTopic(topicId: string): Observable<BlogPost[]> {
-    console.log(`API call to fetch posts for topicId: ${topicId}`);
     return this.http.get<BlogPost[]>(`${this.apiUrl}/?topic=${topicId}`);
   }  
   

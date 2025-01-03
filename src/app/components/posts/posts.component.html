@@ -5,8 +5,8 @@
 </form>
 </div>
 <h2>Posts for Topic: {{ topicTitle }}</h2>
-<ul>
-  <li *ngFor="let post of posts">
-    {{ post.post }}
-  </li>
-</ul>
+<div>
+  <div *ngFor="let post of posts">
+    <app-post [post]="post" (postDeleted)="onPostDeleted($event)"></app-post>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, throwError } from "rxjs";
 import { BlogTopic } from "../models/blog-topic.model";
 
 @Injectable({ providedIn: 'root' })
@@ -16,7 +16,12 @@ export class BlogTopicService {
 
 
   getBlogTopics(): Observable<BlogTopic[]> {
-    return this.http.get<BlogTopic[]>(this.apiUrl);
+    return this.http.get<BlogTopic[]>(`${this.apiUrl}/`).pipe(
+      catchError((error) => {
+        console.error('Error fetching topics:', error);
+        return throwError(() => error);
+      })
+    );
   }
 
 

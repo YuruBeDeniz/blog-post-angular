@@ -1,1 +1,9 @@
-<p>post-detail works!</p>
+<div class="post-container">
+    <textarea [(ngModel)]="editedPost.post" class="edit-textarea"></textarea>
+    <div class="actions">
+      <button class="btn-update" (click)="onUpdate()">Update</button>
+      <button class="btn-delete" (click)="onDelete()">Delete</button>
+      <button class="btn-cancel" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+  

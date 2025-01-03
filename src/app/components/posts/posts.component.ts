@@ -5,11 +5,12 @@ import { BlogPostService } from '../../services/post.service';
 import { CommonModule } from '@angular/common';
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, PostComponent],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.css'
 })
@@ -52,11 +53,11 @@ export class PostsComponent {
   }
 
   getPosts(): void {
-    console.log(`Fetching posts for topicId: ${this.topicId}`);
     if (this.topicId) {
       this.blogPostService.getPostsByTopic(this.topicId).subscribe({
         next: (posts) => {
-          console.log(`Posts received for topicId ${this.topicId}:`, posts);
+          //console.log(`Posts received for topicId ${this.topicId}:`, posts);
+          //console.log("user:", this.user())
           this.posts = posts;
         },
         error: (err) => console.error('Error fetching posts:', err),
@@ -74,8 +75,8 @@ export class PostsComponent {
 
       this.blogPostService.createPost(newPost).subscribe({
         next: (createdPost) => {
-          console.log(this.topicId);
-          console.log(createdPost);
+          //console.log(this.topicId);
+          //console.log(createdPost);
           this.posts.push(createdPost);
           this.postForm.reset();
         },
@@ -83,5 +84,9 @@ export class PostsComponent {
       });
     }
   }
-
+  onPostDeleted(postId: string) {
+    console.log('Removing post with ID:', postId);
+    this.posts = this.posts.filter(post => post.id !== postId);
+  }
+  
 }
