@@ -2,7 +2,9 @@
     <div class="post-container">
         <p>{{post.post}}</p>
         <span>By {{user().username}}</span>
-        <button class="btn-edit" (click)="(toggleEdit())">Edit</button>
+        @if(post.author.id == user().id) {
+            <button class="btn-edit" (click)="(toggleEdit())">Edit</button>
+        }
     </div>
 } @else {
     <app-post-detail 

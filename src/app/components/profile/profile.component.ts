@@ -47,7 +47,7 @@ ngOnInit(): void {
 createTopic(): void {
   const newBlogTopic = {
     title: this.topicForm.get('title')?.value,
-    author: this.user().username,
+    author: this.user(),
     posts: [],
   };
 

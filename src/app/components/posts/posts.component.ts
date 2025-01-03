@@ -70,7 +70,7 @@ export class PostsComponent {
       const newPost: BlogPost = {
         post: this.postForm.value.post,
         topic: this.topicId,
-        author: this.user().username,
+        author: this.user(),
       };
 
       this.blogPostService.createPost(newPost).subscribe({

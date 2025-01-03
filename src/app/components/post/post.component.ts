@@ -15,7 +15,7 @@ import { BlogPostService } from '../../services/post.service';
 export class PostComponent {
   @Input() post!: BlogPost;
   @Output() postDeleted = new EventEmitter<string>();
-  
+
   user = signal<User>({
     id: '',
     username: '',
@@ -48,11 +48,11 @@ export class PostComponent {
       ...updatedBlogPost,
       post: updatedBlogPost.post
     }
+    console.log('Updating post:', updatedPost.author.id);
     this.blogPostService.updatePost(updatedBlogPost.id, updatedPost).subscribe({
       next: (response) => {
-        console.log('Post updated successfully:', response);
         this.post = { ...this.post, ...response }; // Update the local post state
-        this.toggleEdit(); // Exit edit mode
+        this.toggleEdit();
       },
       error: (error) => console.log(error)
     })
