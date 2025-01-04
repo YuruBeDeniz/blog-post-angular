@@ -1,7 +1,7 @@
 @if (!isEditing()) {
     <div class="post-container">
         <p>{{post.post}}</p>
-        <span>By {{user().username}}</span>
+        <span>By {{post.author.username}}</span>
         @if(post.author.id == user().id) {
             <button class="btn-edit" (click)="(toggleEdit())">Edit</button>
         }

@@ -1,9 +1,7 @@
-<div class="sidebar">
+<div>
   <h2>Topics</h2>
-  <ul>
-    <li *ngFor="let topic of blogTopics()" >
-     <button (click)="selectTopic(topic)">{{ topic.title }}</button> 
-    </li>
-  </ul>
+    <div *ngFor="let topic of blogTopics()" >
+     <p (click)="selectTopic(topic)">{{ topic.title }}</p> 
+    </div>
 </div>
   

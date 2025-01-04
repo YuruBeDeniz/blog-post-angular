@@ -1,11 +1,11 @@
 <div class="add-post-container">
-<form [formGroup]="postForm" (ngSubmit)="createPost()">
-  <textarea formControlName="post" placeholder="Write your post..."></textarea>
-  <button type="submit">Add Post</button>
-</form>
+  <form [formGroup]="postForm" (ngSubmit)="createPost()">
+    <textarea formControlName="post" placeholder="Write your post..."></textarea>
+    <button type="submit">Add Post</button>
+  </form>
 </div>
 <h2>Posts for Topic: {{ topicTitle }}</h2>
-<div>
+<div class="posts-container">
   <div *ngFor="let post of posts">
     <app-post [post]="post" (postDeleted)="onPostDeleted($event)"></app-post>
   </div>

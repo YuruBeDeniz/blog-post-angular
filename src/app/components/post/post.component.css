@@ -1,35 +1,51 @@
 .post-container {
-    max-width: 400px;
-    height: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: rgb(249, 215, 215);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .post-container .btn-edit {
-    align-self: flex-end;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .post-container .btn-edit:hover {
-    background-color: #0056b3;
-  }
+  height: 300px; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fdfdfd; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
 
-  .post-container p {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: rgb(240, 235, 235);
-    height: 40%;
+.post-container p {
+  font-size: 1rem;
+  color: #34495e;
+  flex: 1; 
+  margin: 0;
+}
+
+.post-container span {
+  font-size: 0.875rem;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+.post-container .btn-edit {
+  align-self: flex-end; 
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-container .btn-edit:hover {
+  background-color: #2980b9;
+}
+
+
+@media (max-width: 768px) {
+  .post-container {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .post-container {
     width: 100%;
   }
-  
+}

@@ -1,4 +1,47 @@
-.add-post-container{
-    width: 200px;
-    margin-right: auto;
+.add-post-container {
+  width: 100%; 
+  margin-bottom: 20px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
 }
+
+
+.add-post-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-post-container textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.add-post-container button {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-post-container button:hover {
+  background-color: #229954;
+}
+
+.add-post-container button:hover {
+  background-color: #229954;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+  
