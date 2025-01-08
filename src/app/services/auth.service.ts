@@ -6,6 +6,7 @@ import { tap, catchError, map } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { StorageService } from './storage.service';
+import { BlogPost } from '../models/blog-post.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -49,7 +50,7 @@ export class AuthService {
         this.userSubject.next(user);
         this.isLoggedInSubject.next(true);
       }),
-      map(() => true),
+      map(() => true), // Emit true on successful verification
       catchError(() => {
         this.logoutUser();
         return of(false);
@@ -68,10 +69,6 @@ export class AuthService {
       },
       error: error => {
         console.error('Error during logout:', error);
-        this.storageService.removeItem('authToken');
-        this.isLoggedInSubject.next(false);
-        this.userSubject.next(null);
-        this.router.navigate(['/login']);
       }
     });
   }
@@ -81,4 +78,30 @@ export class AuthService {
       this.router.navigate(['/login']);
     }
   }
+
+
+  isAdmin(): boolean {
+    const user = this.userSubject.getValue();
+    console.log(user?.group_names);
+    return user?.group_names?.includes('Admin') ?? false; 
+  }
+
+  canEditPosts(post: BlogPost): boolean {
+    const user = this.userSubject.getValue();
+    return this.isAdmin() || post.author.id === user?.id;
+  }
 }
+
+
+
+/* 
+map(() => true) -> Converts the response (User object) 
+from the backend into a simple boolean (true) indicating success.
+The calling component doesn’t need the entire User object 
+but just needs to know if the verification succeeded.
+*/
+
+
+/* 
+tap: Performs side effects (e.g., logging, state updates) on observable streams.
+*/

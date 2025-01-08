@@ -21,6 +21,7 @@ export class ProfileComponent {
     imageURL: '',
     posts: [],
     topics: [],
+    group_names: []
   });
   topicForm!: FormGroup;
   errorMessage = signal<string>('');

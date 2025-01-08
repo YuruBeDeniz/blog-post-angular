@@ -3,6 +3,7 @@ export type User = {
     username: string;
     email: string;
     imageURL: string;
-    posts: [];
-    topics: [];
+    posts?: [];
+    topics?: [];
+    group_names: string[]
 }

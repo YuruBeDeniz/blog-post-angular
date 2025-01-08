@@ -23,6 +23,7 @@ export class PostComponent {
     imageURL: '',
     posts: [],
     topics: [],
+    group_names: []
   });
 
   isEditing = signal<boolean>(false);
@@ -38,6 +39,13 @@ export class PostComponent {
     });
   }
 
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  canEdit(post: BlogPost): boolean {
+    return this.authService.canEditPosts(post);
+  }
 
   toggleEdit(){
     this.isEditing.set(!this.isEditing())
@@ -48,10 +56,10 @@ export class PostComponent {
       ...updatedBlogPost,
       post: updatedBlogPost.post
     }
-    console.log('Updating post:', updatedPost.author.id);
+    console.log(updatedPost.author.id);
     this.blogPostService.updatePost(updatedBlogPost.id, updatedPost).subscribe({
       next: (response) => {
-        this.post = { ...this.post, ...response }; // Update the local post state
+        this.post = {  ...response, ...this.post }; 
         this.toggleEdit();
       },
       error: (error) => console.log(error)
@@ -62,7 +70,7 @@ export class PostComponent {
     this.blogPostService.deletePost(postId).subscribe({
       next: () => {
         console.log('Post deleted successfully');
-        this.postDeleted.emit(postId); // Notify parent about deletion
+        this.postDeleted.emit(postId); 
       },
       error: (err) => {
         console.error('Error deleting post:', err);
@@ -70,3 +78,5 @@ export class PostComponent {
     });
   }
 }
+
+

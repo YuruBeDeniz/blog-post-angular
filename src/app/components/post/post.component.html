@@ -2,9 +2,10 @@
     <div class="post-container">
         <p>{{post.post}}</p>
         <span>By {{post.author.username}}</span>
-        @if(post.author.id == user().id) {
-            <button class="btn-edit" (click)="(toggleEdit())">Edit</button>
+        @if (canEdit(post)) {
+            <button class="btn-edit" (click)="toggleEdit()">Edit</button>
         }
+
     </div>
 } @else {
     <app-post-detail 
@@ -14,5 +15,4 @@
         (delete)="deletePost($event)"
     ></app-post-detail>
 }   
-
 

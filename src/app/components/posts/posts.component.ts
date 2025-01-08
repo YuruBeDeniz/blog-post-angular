@@ -27,6 +27,7 @@ export class PostsComponent {
     imageURL: '',
     posts: [],
     topics: [],
+    group_names: []
   });
 
   constructor(

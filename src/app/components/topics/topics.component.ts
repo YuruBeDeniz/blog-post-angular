@@ -24,3 +24,8 @@ export class TopicsComponent implements OnInit {
     this.selectedTopicTitle = topic.title;
   }
 }
+
+/* This components is like a bridge between two unrelated components.
+It gets the selectedTopicId from topics-sidebar-component and 
+passes it down to posts-component. 
+*/
