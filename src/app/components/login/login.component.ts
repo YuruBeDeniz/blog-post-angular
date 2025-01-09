@@ -35,7 +35,7 @@ export class LoginComponent {
           console.log('Token:', response);
           this.authService.storeToken(response.token);
           this.authService.verifyStoredToken().subscribe();
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);
         },
         error: (error) => {
           console.error('Error logging in:', error);
